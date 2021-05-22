@@ -98,6 +98,7 @@
 > 현재 핸드폰이 충전중인지를 반환합니다.
 
 # File
+#### File 대신에 FileStream 도 가능 (getSdcardPath(), createFolder() 사용 불가), `_null` 인자 없음
 ```js
 @String File.getSdcardPath()
 ```
@@ -131,6 +132,59 @@
 @void File.remove(String name)
 ```
 > `name`이라는 경로에 있는 파일을 삭제합니다.
+
+# Black
+```js
+@void Black.addRoom(String room)
+```
+> 스크립트 실행 블랙리스트에 `room` 이라는 방을 추가합니다.
+
+```js
+@void Black.removeRoom(String room)
+```
+> 스크립트 실행 블랙리스트에서 `room` 이라는 방을 제거합니다.
+
+```js
+@void Black.addSender(String sender)
+```
+> 스크립트 실행 블랙리스트에 `sender` 라는 사용자를 추가합니다.
+
+```js
+@void Black.removeSender(String sender)
+```
+> 스크립트 실행 블랙리스트에서 `sender` 라는 사용자를 제거합니다.
+
+```js
+@String Black.getRoom()
+``` 
+> 스크립트 실행 블랙리스트 중에서 방 목록만 모아서 반환합니다.
+
+```js
+@String Black.getSender()
+``` 
+> 스크립트 실행 블랙리스트 중에서 사용자 목록만 모아서 반환합니다.
+
+# DataBase
+```js
+@void DataBase.setDataBase(String name, String content)
+```
+> 앱의 데이터베이스에서 `name` 이라는 파일에 `content` 라는 내용을 입력합니다.
+
+```js
+@String DataBase.getDataBase(String name)
+```
+> 앱의 데이터베이스에서 `name` 이라는 파일을 읽어 반환합니다. 만약 `name` 이라는 파일이 없다면 `null` 을 반환합니다.
+
+```js
+@void DataBase.appendDataBase(String name, String content)
+```
+> 앱의 데이터베이스에서 `name` 이라는 파일에 `content` 라는 내용을 덮어씁니다.
+
+```js
+@void DataBase.removeDataBase(String name)
+```
+> 앱의 데이터베이스에서 `name` 이라는 파일을 삭제합니다.
+
 
 # Utils
 ```js
