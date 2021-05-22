@@ -1,7 +1,7 @@
 # 새로운 자동응답 봇
 > New Auto-reply Bot
 
-![Image](https://img.shields.io/badge/CHAT%20BOT-New%20AutoReply%20Bot%202-9cf.svg) 
+![Image](https://img.shields.io/badge/CHAT%20BOT-New%20AutoReply%20Bot-9cf.svg) 
 ![Image](https://img.shields.io/badge/Language-JavaScript-yellow.svg)
 ![Image](https://img.shields.io/badge/Language-CoffeeScript-lightgrey.svg)
 ![Image](https://img.shields.io/badge/Language-LuaScript-blueviolet.svg)
@@ -21,7 +21,7 @@
 ## 미리보기 이미지
 <div>
 <img src="https://raw.githubusercontent.com/sungbin5304/NewAutoReplyBot-Helper/master/IMAGE/screener_1562496049538.png" width="300" height="500">
-<img src="https://raw.githubusercontent.com/sungbin5304/NewAutoReplyBot-Helper/master/IMAGE/screener_1562496123021.png" width="300" height="500">
+<img src="https://raw.githubusercontent.com/sungbin5304/NewAutoReplyBot-Helper/master/IMAGE/screener_1568363700374.png" width="300" height="500">
 <img src="https://raw.githubusercontent.com/sungbin5304/NewAutoReplyBot-Helper/master/IMAGE/screener_1562496149897.png" width="300" height="500">
 <img src="https://raw.githubusercontent.com/sungbin5304/NewAutoReplyBot-Helper/master/IMAGE/screener_1562496170558.png" width="300" height="500">
 </div>
@@ -46,14 +46,17 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, package) {
 ## 메인함수 인자  설명
 ``` JavaScript
 @replier
-replier.reply(@String content) : content를 Action이 replier인 방으로 보냄
+replier.reply(String msg) : msg를 Action이 replier인 방으로 전송합니다.
+replier.reply(String room, String msg) : msg를 방 이름이 room 인 곳으로 전송합니다.
+replier.replyShowAll(String msg1, String msg2) : Action이 replier인 방에 msg1는 그냥 보이고, msg2는 전체보기 버튼을 눌러야 보이게 전송합니다.
+replier.replyShowAll(String room, String msg1, msg2) : room 이라는 방에 msg1는 그냥 보이고, msg2는 전체보기 버튼을 눌러야 보이게 전송합니다.
 
 @ImageDB
 ImageDB.getProfileImage() : 카카오톡에서 메세지를 받은 상대방의 프로필 사진을 Base64로 인코딩해서 리턴
 ImageDB.getPicture() : 카카오톡에서 가장 마지막으로 받은 사진을 Base64로 인코딩해서 리턴. (Default : null)
 
-※ ImageDB.getPicture() 사용시 `data parcel size 1541904 bytes` 라는 오류가 발생할 수 있습니다.<br>
-이러한 경우는 사진의 Base64 값이 너무 길어서 발생하는 오류이니, 용량이 작은 사진으로 받으면 정상 작동 합니다.
+※ replier.reply(ImageDB.getPicture()) 사용시 data parcel size ~~~ bytes 라는 오류가 발생할 수 있습니다.
+이러한 경우는 사진의 Base64 값이 너무 길어서 카톡으로 전송하는 과정에서 발생하는 오류이니, 용량이 작은 사진으로 Base64를 받고 보내면 정상 작동 합니다.
 ```
 
 ## 자바스크립트 작성 예시
@@ -82,7 +85,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, package) {
 [[Relase]](https://github.com/sungbin5304/NewAutoReplyBot-Helper/releases)
 
 ## 플레이스토어 링크
-[[Playstore]](https://play.google.com/apps/testing/com.sungbin.kakaotalk.bot)
+[[Playstore]](https://play.google.com/store/apps/details?id=com.sungbin.reply.bot)
 
 ## 지원하는 메신저
 #### 2019.07.03 기준 작동 확인된 메신저들 목록
